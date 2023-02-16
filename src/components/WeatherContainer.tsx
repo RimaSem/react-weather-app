@@ -1,4 +1,3 @@
-import React from "react";
 import MainInfo from "./MainInfo";
 import InfoItem from "./InfoItem";
 
