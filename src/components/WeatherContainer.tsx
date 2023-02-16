@@ -1,25 +1,60 @@
 import React from "react";
+import MainInfo from "./MainInfo";
+import InfoItem from "./InfoItem";
 
-function WeatherContainer() {
+type WeatherContainerProps = {
+  weatherData: {
+    list: {
+      main: { temp: number; feels_like: number; humidity: number };
+      pop: number;
+      wind: { speed: number };
+      weather: { main: string; icon: string }[];
+    }[];
+  };
+  cityData: [];
+};
+
+function WeatherContainer({ weatherData, cityData }: WeatherContainerProps) {
   return (
     <div className="weather-container">
-      <div className="temp-type-btn">
-        <span>F</span>
-      </div>
-      <div className="location"></div>
-      <div className="temp-data-row">
-        <span className="weather-icon">
-          <img src="https://openweathermap.org/img/wn/09d@4x.png" />
-        </span>
-        <span className="temperature"></span>
-        <span className="degree">º</span>
-        <span className="temperature-type">C</span>
-      </div>
-      <span className="weather-description"></span>
-
+      <MainInfo cityData={cityData} weatherData={weatherData} />
       <div className="weather-details-container">
-        <div className="column-1"></div>
-        <div className="column-2"></div>
+        <div className="column-1">
+          <InfoItem
+            addClass={"feels-like"}
+            img={"./img/temperature.svg"}
+            label={"Feels Like"}
+            itemData={
+              weatherData && Math.round(+weatherData.list[0].main.feels_like)
+            }
+          >
+            <>
+              <span className="temp"></span>°<span className="type">C</span>
+            </>
+          </InfoItem>
+          <InfoItem
+            addClass={"humidity"}
+            img={"./img/humidity.svg"}
+            label={"Humidity"}
+            itemData={weatherData && `${weatherData.list[0].main.humidity}%`}
+          />
+        </div>
+        <div className="column-2">
+          <InfoItem
+            addClass={"precipitation"}
+            img={"./img/rainy.svg"}
+            label={"Precipitation"}
+            itemData={weatherData && `${+weatherData.list[0].pop * 100}%`}
+          />
+          <InfoItem
+            addClass={"wind"}
+            img={"./img/windy.svg"}
+            label={"Wind Speed"}
+            itemData={
+              weatherData && `${Math.round(weatherData.list[0].wind.speed)} m/s`
+            }
+          />
+        </div>
       </div>
     </div>
   );

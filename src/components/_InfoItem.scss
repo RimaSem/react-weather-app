@@ -1,0 +1,28 @@
+.item {
+  display: flex;
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+
+  .mini-container {
+    display: flex;
+    flex-direction: column;
+
+    .label {
+      font-size: 0.8rem;
+      font-weight: 300;
+    }
+
+    .data {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.humidity,
+.wind {
+  margin-top: 15%;
+}

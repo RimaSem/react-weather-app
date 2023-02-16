@@ -1,6 +1,10 @@
 import React from "react";
 
-function SearchBar() {
+type SearchBarProps = {
+  setCity: React.Dispatch<React.SetStateAction<string>>;
+};
+
+function SearchBar({ setCity }: SearchBarProps) {
   return (
     <div className="search-bar">
       <form>
