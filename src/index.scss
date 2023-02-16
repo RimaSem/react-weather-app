@@ -1,0 +1,23 @@
+@import "./components/SearchBar";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-family: "Roboto", sans-serif;
+  background: url(./img/aral-tasher-sky.jpg) no-repeat center center fixed;
+  background-size: cover;
+
+  .App {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+  }
+}
