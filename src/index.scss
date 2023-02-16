@@ -1,4 +1,7 @@
 @import "./components/SearchBar";
+@import "./components/WeatherContainer";
+
+$error-color: rgb(255, 139, 139);
 
 * {
   box-sizing: border-box;
@@ -23,11 +26,17 @@ body {
     .error-message {
       position: absolute;
       top: 45px;
-      color: rgb(255, 139, 139);
-      border: 0.5px solid rgb(255, 139, 139);
+      color: $error-color;
+      border: 0.5px solid $error-color;
       background-color: rgba(0, 0, 0, 0.729);
       padding: 10px;
       display: none;
     }
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  .App {
+    width: 100%;
   }
 }
