@@ -19,5 +19,15 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 5vh;
+
+    .error-message {
+      position: absolute;
+      top: 45px;
+      color: rgb(255, 139, 139);
+      border: 0.5px solid rgb(255, 139, 139);
+      background-color: rgba(0, 0, 0, 0.729);
+      padding: 10px;
+      display: none;
+    }
   }
 }

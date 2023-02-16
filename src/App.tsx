@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
       <SearchBar />
+      <div className="error-message">City not found</div>
     </div>
   );
 }
