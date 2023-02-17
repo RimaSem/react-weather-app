@@ -1,9 +1,11 @@
+$dark-color: rgba(0, 0, 0, 0.729);
+$light-color: rgba(255, 255, 255, 0.864);
+$error-color: rgb(255, 139, 139);
+
 @import "./components/SearchBar";
 @import "./components/WeatherContainer";
 @import "./components/MainInfo";
 @import "./components/InfoItem";
-
-$error-color: rgb(255, 139, 139);
 
 * {
   box-sizing: border-box;
@@ -30,15 +32,9 @@ body {
       top: 45px;
       color: $error-color;
       border: 0.5px solid $error-color;
-      background-color: rgba(0, 0, 0, 0.729);
+      background-color: $dark-color;
       padding: 10px;
       display: none;
     }
-  }
-}
-
-@media only screen and (max-width: 330px) {
-  .App {
-    width: 100%;
   }
 }
