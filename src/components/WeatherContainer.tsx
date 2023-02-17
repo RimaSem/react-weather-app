@@ -2,6 +2,10 @@ import { useState } from "react";
 import MainInfo from "./MainInfo";
 import InfoItem from "./InfoItem";
 import { convertToF } from "../utils";
+import feelsLikeIcon from "../img/temperature.svg";
+import precipitationIcon from "../img/rainy.svg";
+import humidityIcon from "../img/humidity.svg";
+import windIcon from "../img/windy.svg";
 
 type WeatherContainerProps = {
   weatherData: {
@@ -30,7 +34,7 @@ function WeatherContainer({ weatherData, cityData }: WeatherContainerProps) {
         <div className="column-1">
           <InfoItem
             addClass={"feels-like"}
-            img={"./img/temperature.svg"}
+            img={feelsLikeIcon}
             label={"Feels Like"}
             itemData={
               !isF
@@ -45,7 +49,7 @@ function WeatherContainer({ weatherData, cityData }: WeatherContainerProps) {
           </InfoItem>
           <InfoItem
             addClass={"humidity"}
-            img={"./img/humidity.svg"}
+            img={humidityIcon}
             label={"Humidity"}
             itemData={`${weatherData.list[0].main.humidity}%`}
           />
@@ -53,13 +57,13 @@ function WeatherContainer({ weatherData, cityData }: WeatherContainerProps) {
         <div className="column-2">
           <InfoItem
             addClass={"precipitation"}
-            img={"./img/rainy.svg"}
+            img={precipitationIcon}
             label={"Precipitation"}
             itemData={`${+weatherData.list[0].pop * 100}%`}
           />
           <InfoItem
             addClass={"wind"}
-            img={"./img/windy.svg"}
+            img={windIcon}
             label={"Wind Speed"}
             itemData={`${Math.round(weatherData.list[0].wind.speed)} m/s`}
           />
