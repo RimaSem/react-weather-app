@@ -1,5 +1,7 @@
+import { useState } from "react";
 import MainInfo from "./MainInfo";
 import InfoItem from "./InfoItem";
+import { convertToF } from "../utils";
 
 type WeatherContainerProps = {
   weatherData: {
@@ -14,9 +16,16 @@ type WeatherContainerProps = {
 };
 
 function WeatherContainer({ weatherData, cityData }: WeatherContainerProps) {
+  const [isF, setIsF] = useState(false);
+
   return (
     <div className="weather-container">
-      <MainInfo cityData={cityData} weatherData={weatherData} />
+      <MainInfo
+        cityData={cityData}
+        weatherData={weatherData}
+        isF={isF}
+        setIsF={setIsF}
+      />
       <div className="weather-details-container">
         <div className="column-1">
           <InfoItem
@@ -24,18 +33,21 @@ function WeatherContainer({ weatherData, cityData }: WeatherContainerProps) {
             img={"./img/temperature.svg"}
             label={"Feels Like"}
             itemData={
-              weatherData && Math.round(+weatherData.list[0].main.feels_like)
+              !isF
+                ? Math.round(+weatherData.list[0].main.feels_like)
+                : Math.round(convertToF(+weatherData.list[0].main.feels_like))
             }
           >
             <>
-              <span className="temp"></span>°<span className="type">C</span>
+              <span className="temp"></span>°
+              <span className="type">{isF ? "F" : "C"}</span>
             </>
           </InfoItem>
           <InfoItem
             addClass={"humidity"}
             img={"./img/humidity.svg"}
             label={"Humidity"}
-            itemData={weatherData && `${weatherData.list[0].main.humidity}%`}
+            itemData={`${weatherData.list[0].main.humidity}%`}
           />
         </div>
         <div className="column-2">
@@ -43,15 +55,13 @@ function WeatherContainer({ weatherData, cityData }: WeatherContainerProps) {
             addClass={"precipitation"}
             img={"./img/rainy.svg"}
             label={"Precipitation"}
-            itemData={weatherData && `${+weatherData.list[0].pop * 100}%`}
+            itemData={`${+weatherData.list[0].pop * 100}%`}
           />
           <InfoItem
             addClass={"wind"}
             img={"./img/windy.svg"}
             label={"Wind Speed"}
-            itemData={
-              weatherData && `${Math.round(weatherData.list[0].wind.speed)} m/s`
-            }
+            itemData={`${Math.round(weatherData.list[0].wind.speed)} m/s`}
           />
         </div>
       </div>

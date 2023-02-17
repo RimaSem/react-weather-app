@@ -1,3 +1,5 @@
+import { convertToF } from "../utils";
+
 type MainInfoProps = {
   weatherData: {
     list: {
@@ -6,34 +8,35 @@ type MainInfoProps = {
     }[];
   };
   cityData: { name: string; country: string }[];
+  isF: boolean;
+  setIsF: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function MainInfo({ cityData, weatherData }: MainInfoProps) {
+function MainInfo({ cityData, weatherData, isF, setIsF }: MainInfoProps) {
   return (
     <>
-      <div className="temp-type-btn">
-        <span>F</span>
+      <div className="temp-type-btn" onClick={() => setIsF((prev) => !prev)}>
+        <span>{isF ? "C" : "F"}</span>
       </div>
       <div className="location">
-        {cityData && `${cityData[0].name}, ${cityData[0].country}`}
+        {`${cityData[0].name}, ${cityData[0].country}`}
       </div>
       <div className="temp-data-row">
         <span className="weather-icon">
           <img
-            src={
-              weatherData &&
-              `https://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}@4x.png`
-            }
+            src={`https://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}@4x.png`}
           />
         </span>
         <span className="temperature">
-          {weatherData && Math.round(+weatherData.list[0].main.temp)}
+          {!isF
+            ? Math.round(+weatherData.list[0].main.temp)
+            : Math.round(convertToF(+weatherData.list[0].main.temp))}
         </span>
         <span className="degree">º</span>
-        <span className="temperature-type">C</span>
+        <span className="temperature-type">{isF ? "F" : "C"}</span>
       </div>
       <span className="weather-description">
-        {weatherData && weatherData.list[0].weather[0].main}
+        {weatherData.list[0].weather[0].main}
       </span>
     </>
   );
