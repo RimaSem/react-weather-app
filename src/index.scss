@@ -2,10 +2,10 @@ $dark-color: rgba(0, 0, 0, 0.729);
 $light-color: rgba(255, 255, 255, 0.864);
 $error-color: rgb(255, 139, 139);
 
-@import "./components/SearchBar";
-@import "./components/WeatherContainer";
-@import "./components/MainInfo";
-@import "./components/InfoItem";
+@import "./components/scss/SearchBar";
+@import "./components/scss/WeatherContainer";
+@import "./components/scss/MainInfo";
+@import "./components/scss/InfoItem";
 
 * {
   box-sizing: border-box;
