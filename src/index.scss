@@ -15,9 +15,9 @@ body {
   margin: 0;
   min-width: 100%;
   min-height: 100%;
-  font-family: "Roboto", sans-serif;
   background: url(./img/aral-tasher-sky.jpg) no-repeat center center fixed;
   background-size: cover;
+  font-family: "Roboto", sans-serif;
 
   .App {
     position: relative;
@@ -30,11 +30,11 @@ body {
     .error-message {
       position: absolute;
       top: 45px;
-      color: $error-color;
-      border: 0.5px solid $error-color;
-      background-color: $dark-color;
-      padding: 10px;
       display: none;
+      border: 0.5px solid $error-color;
+      padding: 10px;
+      background-color: $dark-color;
+      color: $error-color;
     }
   }
 }

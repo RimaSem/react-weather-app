@@ -1,23 +1,23 @@
 .temp-type-btn {
+  position: absolute;
+  top: 1.5%;
+  right: 1%;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  text-align: center;
+  border: 0.5px solid grey;
+  border-radius: 15px;
   width: 32px;
   height: 32px;
-  color: $dark-color;
   background-color: $light-color;
-  border: 0.5px solid grey;
-  font-weight: 500;
   font-size: 1.2rem;
-  border-radius: 15px;
-  top: 1.5%;
-  right: 1%;
+  font-weight: 500;
+  color: $dark-color;
+  text-align: center;
 
   &:hover {
-    cursor: pointer;
     opacity: 0.8;
+    cursor: pointer;
   }
 }
 

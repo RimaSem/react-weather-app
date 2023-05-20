@@ -1,29 +1,29 @@
 .weather-container {
   position: relative;
-  color: $light-color;
-  margin-top: 3em;
-  width: clamp(330px, 35vw, 95vw);
-  padding: 5%;
-  background-color: $dark-color;
-  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 20px;
+  margin-top: 3em;
+  padding: 5%;
+  width: clamp(330px, 35vw, 95vw);
+  background-color: $dark-color;
+  color: $light-color;
 
   .weather-details-container {
-    margin-top: 10%;
-    padding-top: 10%;
     display: flex;
     justify-content: space-between;
     gap: 1em;
-    width: 100%;
     border-top: 1px solid $light-color;
+    margin-top: 10%;
+    padding-top: 10%;
+    width: 100%;
 
     img {
+      margin-right: 8px;
       width: 24px;
       height: 24px;
-      margin-right: 8px;
     }
 
     .column-1,
