@@ -27,7 +27,7 @@ body {
     align-items: center;
     margin-top: 5vh;
 
-    .error-message {
+    .error-message-city {
       position: absolute;
       top: 45px;
       display: none;
@@ -35,6 +35,15 @@ body {
       padding: 10px;
       background-color: $dark-color;
       color: $error-color;
+    }
+
+    .error-message-weather {
+      margin-top: 5em;
+      max-width: 95%;
+      font-size: 1.3rem;
+      color: white;
+      text-align: center;
+      text-shadow: 2px 2px 2px #000000;
     }
   }
 }

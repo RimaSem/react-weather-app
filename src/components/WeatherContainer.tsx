@@ -6,20 +6,17 @@ import feelsLikeIcon from "../img/temperature.svg";
 import precipitationIcon from "../img/rainy.svg";
 import humidityIcon from "../img/humidity.svg";
 import windIcon from "../img/windy.svg";
+import { WeatherProps } from "../App";
 
-type WeatherContainerProps = {
-  weatherData: {
-    list: {
-      main: { temp: number; feels_like: number; humidity: number };
-      pop: number;
-      wind: { speed: number };
-      weather: { main: string; icon: string }[];
-    }[];
-  };
+export interface WeatherContainerProps {
+  weatherData: WeatherProps;
   cityData: [];
-};
+}
 
-function WeatherContainer({ weatherData, cityData }: WeatherContainerProps) {
+const WeatherContainer: React.FC<WeatherContainerProps> = ({
+  weatherData,
+  cityData,
+}) => {
   const [isF, setIsF] = useState(false);
 
   return (
@@ -71,6 +68,6 @@ function WeatherContainer({ weatherData, cityData }: WeatherContainerProps) {
       </div>
     </div>
   );
-}
+};
 
 export default WeatherContainer;

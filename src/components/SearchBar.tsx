@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
 
-type SearchBarProps = {
+interface SearchBarProps {
   setCity: React.Dispatch<React.SetStateAction<string>>;
   errorRef: React.MutableRefObject<HTMLDivElement | null>;
-};
+}
 
-function SearchBar({ setCity, errorRef }: SearchBarProps) {
-  const inputRef = useRef<HTMLInputElement | null>(null);
+const SearchBar: React.FC<SearchBarProps> = ({ setCity, errorRef }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (errorRef.current) {
       errorRef.current.style.display = "none";
@@ -16,7 +16,7 @@ function SearchBar({ setCity, errorRef }: SearchBarProps) {
     if (inputRef.current) {
       setCity(inputRef.current.value);
     }
-  }
+  };
 
   return (
     <div className="search-bar">
@@ -31,6 +31,6 @@ function SearchBar({ setCity, errorRef }: SearchBarProps) {
       </form>
     </div>
   );
-}
+};
 
 export default SearchBar;
