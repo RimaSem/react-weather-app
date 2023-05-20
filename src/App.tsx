@@ -13,18 +13,18 @@ export interface WeatherProps {
 }
 
 const App: React.FC = () => {
-  const [APIkey, setAPIkey] = useState("4a551e9fd5cbd706339b90539e03776c");
   const [city, setCity] = useState("klaipeda");
   const [cityData, setCityData] = useState<[]>([]);
   const [weatherData, setWeatherData] = useState<WeatherProps>();
   const [isError, setIsError] = useState(false);
 
+  const API_KEY = import.meta.env.VITE_API_KEY;
   const errorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     axios
       .get(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIkey}`
+        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API_KEY}`
       )
       .then((response) => {
         if (response.data.cod === "400" || response.data.length < 1) {
@@ -33,7 +33,7 @@ const App: React.FC = () => {
           setCityData(response.data);
           axios
             .get(
-              `https://api.openweathermap.org/data/2.5/forecast?lat=${response.data[0].lat}&lon=${response.data[0].lon}&appid=${APIkey}&units=metric`
+              `https://api.openweathermap.org/data/2.5/forecast?lat=${response.data[0].lat}&lon=${response.data[0].lon}&appid=${API_KEY}&units=metric`
             )
             .then((response) => {
               if (!response) {
