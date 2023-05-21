@@ -20,7 +20,6 @@ const App: React.FC = () => {
 
   const API_KEY = import.meta.env.VITE_API_KEY;
   const errorRef = useRef<HTMLDivElement>(null);
-  console.log(import.meta.env.VITE_API_KEY);
 
   useEffect(() => {
     axios
