@@ -1,48 +1,68 @@
 import { convertToF } from "../utils";
 
 interface MainInfoProps {
+  cityName?: string;
+  countryName?: string;
+  isF: boolean;
+  setIsF: React.Dispatch<React.SetStateAction<boolean>>;
   weatherData: {
     list: {
       main: { temp: number };
       weather: { main: string; icon: string }[];
     }[];
   };
-  cityData: { name: string; country: string }[];
-  isF: boolean;
-  setIsF: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const MainInfo: React.FC<MainInfoProps> = ({
-  cityData,
-  weatherData,
+  cityName,
+  countryName,
   isF,
   setIsF,
-}) => (
-  <>
-    <div className="temp-type-btn" onClick={() => setIsF((prev) => !prev)}>
-      <span>{isF ? "C" : "F"}</span>
-    </div>
-    <div className="location">
-      {`${cityData[0].name}, ${cityData[0].country}`}
-    </div>
-    <div className="temp-data-row">
-      <span className="weather-icon">
-        <img
-          src={`https://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}@4x.png`}
-        />
+  weatherData,
+}) => {
+  const displayTemperature = () => {
+    if (typeof weatherData?.list[0].main.temp === "number") {
+      return weatherData?.list[0].main.temp;
+    } else {
+      return 0;
+    }
+  };
+
+  const displayLocation = () => {
+    if (cityName) {
+      return `${cityName}, ${countryName}`;
+    } else {
+      return "Ooops.. maybe try again?";
+    }
+  };
+
+  return (
+    <>
+      <div className="temp-type-btn" onClick={() => setIsF((prev) => !prev)}>
+        <span>{isF ? "C" : "F"}</span>
+      </div>
+      <div className="location">{displayLocation()}</div>
+      <div className="temp-data-row">
+        <span className="weather-icon">
+          <img
+            src={`https://openweathermap.org/img/wn/${weatherData?.list[0].weather[0].icon}@4x.png`}
+            alt="weather icon"
+          />
+        </span>
+        <span className="temperature">
+          {!isF
+            ? Math.round(displayTemperature())
+            : Math.round(convertToF(displayTemperature()))}
+        </span>
+
+        <span className="degree">º</span>
+        <span className="temperature-type">{isF ? "F" : "C"}</span>
+      </div>
+      <span className="weather-description">
+        {weatherData?.list[0].weather[0].main}
       </span>
-      <span className="temperature">
-        {!isF
-          ? Math.round(+weatherData.list[0].main.temp)
-          : Math.round(convertToF(+weatherData.list[0].main.temp))}
-      </span>
-      <span className="degree">º</span>
-      <span className="temperature-type">{isF ? "F" : "C"}</span>
-    </div>
-    <span className="weather-description">
-      {weatherData.list[0].weather[0].main}
-    </span>
-  </>
-);
+    </>
+  );
+};
 
 export default MainInfo;

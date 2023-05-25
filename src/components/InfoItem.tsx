@@ -16,7 +16,7 @@ const InfoItem: React.FC<InfoItemProps> = ({
   children,
 }) => (
   <div className={{ addClass } + " item"}>
-    <img src={img} />
+    <img src={img} alt={label + " icon"} />
     <div className="mini-container">
       <div className="label">{label}</div>
       <div className="data">

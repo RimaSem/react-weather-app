@@ -1,6 +1,9 @@
+$black-color: rgb(0, 0, 0);
 $dark-color: rgba(0, 0, 0, 0.729);
-$light-color: rgba(255, 255, 255, 0.864);
+$grey-color: rgb(128, 128, 128);
 $error-color: rgb(255, 139, 139);
+$light-color: rgba(255, 255, 255, 0.864);
+$white-color: rgb(255, 255, 255);
 
 @import "./components/scss/SearchBar";
 @import "./components/scss/WeatherContainer";
@@ -30,7 +33,6 @@ body {
     .error-message-city {
       position: absolute;
       top: 45px;
-      display: none;
       border: 0.5px solid $error-color;
       padding: 10px;
       background-color: $dark-color;
@@ -41,9 +43,9 @@ body {
       margin-top: 5em;
       max-width: 95%;
       font-size: 1.3rem;
-      color: white;
+      color: $white-color;
       text-align: center;
-      text-shadow: 2px 2px 2px #000000;
+      text-shadow: 2px 2px 2px $black-color;
     }
   }
 }
